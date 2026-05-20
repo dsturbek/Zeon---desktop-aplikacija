@@ -1,0 +1,223 @@
+﻿<UserControl x:Class="Zeon.FoodPlanCreate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1200"
+             Background="#0A0A0A">
+
+    <UserControl.Resources>
+        <Style x:Key="FieldLabel" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#9A9A9A"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <Style x:Key="InputField" TargetType="TextBox">
+            <Setter Property="Background" Value="#1A1A1A"/>
+            <Setter Property="Foreground" Value="#FFFFFD"/>
+            <Setter Property="BorderBrush" Value="#2A2A2A"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SectionCard" TargetType="Border">
+            <Setter Property="Background" Value="#0D0D0D"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="25"/>
+            <Setter Property="Margin" Value="0,0,0,20"/>
+        </Style>
+
+        <Style x:Key="RedButton" TargetType="Button">
+            <Setter Property="Background" Value="#FF0000"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="20,10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DarkButton" TargetType="Button">
+            <Setter Property="Background" Value="#2A2A2A"/>
+            <Setter Property="Foreground" Value="#9A9A9A"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="15,8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,25">
+            <Button x:Name="btnBack" 
+                    Content="← Natrag" 
+                    Style="{StaticResource DarkButton}" 
+                    Margin="0,0,20,0" 
+                    Click="BtnBack_Click"/>
+            <TextBlock x:Name="txtTitle" 
+                       Text="Novi plan prehrane" 
+                       FontSize="32" 
+                       FontWeight="Bold" 
+                       Foreground="#FFFFFD" 
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+
+                <Border Style="{StaticResource SectionCard}">
+                    <StackPanel>
+                        <TextBlock Text="OSNOVNI PODACI" FontSize="12" FontWeight="Bold" Foreground="#FF0000" Margin="0,0,0,20"/>
+
+                        <TextBlock Text="Naziv plana" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="txtName" Style="{StaticResource InputField}" Margin="0,0,0,15"/>
+
+                        <TextBlock Text="Opis plana" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="txtDescription" Style="{StaticResource InputField}" Height="80" 
+                                 AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Datum početka" Style="{StaticResource FieldLabel}"/>
+                                <DatePicker x:Name="dtpStart" Height="40"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Datum kraja" Style="{StaticResource FieldLabel}"/>
+                                <DatePicker x:Name="dtpEnd" Height="40"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Text="Odabir klijenta" Style="{StaticResource FieldLabel}" Margin="0,15,0,5"/>
+                        <ComboBox x:Name="cmbClient" Height="40" DisplayMemberPath="name_surname" SelectedValuePath="id_client"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SectionCard}">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,15">
+                            <TextBlock Text="OBROCI" FontSize="12" FontWeight="Bold" Foreground="#FF0000" VerticalAlignment="Center"/>
+                            <Button x:Name="btnAddMeal" Content="+ Dodaj obrok" Style="{StaticResource DarkButton}" 
+                                    HorizontalAlignment="Right" Click="BtnAddMeal_Click" FontSize="12"/>
+                        </Grid>
+
+                        <DataGrid x:Name="dgMeals" MouseDoubleClick="dgMeals_MouseDoubleClick" AutoGenerateColumns="False" MinHeight="150" MaxHeight="400"
+                                  Background="#141414" Foreground="White" BorderThickness="0" 
+                                  GridLinesVisibility="None" HeadersVisibility="Column" RowHeight="45"
+                                  CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single">
+
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="#141414"/>
+                                    <Setter Property="Foreground" Value="#7A7A7A"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Padding" Value="15,10"/>
+                                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                    <Setter Property="BorderBrush" Value="#2A2A2A"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Background" Value="#141414"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#1A1A1A"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="#222222"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                                <Border Padding="15,0" Background="{TemplateBinding Background}" BorderThickness="0">
+                                                    <ContentPresenter VerticalAlignment="Center" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="TIP OBROKA" Binding="{Binding meal_type}" Width="*"/>
+                                <DataGridTextColumn Header="DATUM" Binding="{Binding date, StringFormat='dd.MM.yyyy'}" Width="*"/>
+
+                                <DataGridTemplateColumn Width="80">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="✕" 
+                            Background="Transparent" 
+                            Foreground="#FF4444" 
+                            BorderThickness="0"
+                            FontSize="14" 
+                            Cursor="Hand" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            Click="BtnRemoveMeal_Click"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button x:Name="btnSave" Grid.Row="2" Content="Spremi plan prehrane" 
+                Style="{StaticResource RedButton}" HorizontalAlignment="Right" 
+                Margin="0,20,0,0" Click="BtnSave_Click"/>
+    </Grid>
+</UserControl>

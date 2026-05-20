@@ -1,0 +1,120 @@
+<Window x:Class="Zeon.ImportTemplateDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Uvezi iz predloška"
+        Height="500" Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#141414">
+
+    <StackPanel Margin="25">
+        <TextBlock Text="Odaberite predložak"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="#FFFFFD"
+                   Margin="0,0,0,20"/>
+
+        <TextBlock Text="Predložak"
+                   FontSize="13"
+                   Foreground="#9A9A9A"
+                   Margin="0,0,0,5"/>
+        <ComboBox x:Name="cmbTemplates"
+                  Background="#1A1A1A"
+                  Foreground="#212121"
+                  BorderBrush="#2A2A2A"
+                  BorderThickness="1"
+                  Padding="12,10"
+                  FontSize="14"
+                  DisplayMemberPath="workout_template_name"
+                  Margin="0,0,0,15"/>
+
+        <TextBlock Text="Naziv plana"
+                   FontSize="13"
+                   Foreground="#9A9A9A"
+                   Margin="0,0,0,5"/>
+        <TextBox x:Name="txtPlanName"
+                 Background="#1A1A1A"
+                 Foreground="#FFFFFD"
+                 BorderBrush="#2A2A2A"
+                 BorderThickness="1"
+                 Padding="12,10"
+                 FontSize="14"
+                 CaretBrush="#FFFFFD"
+                 Margin="0,0,0,15"/>
+
+        <TextBlock Text="Datum početka"
+                   FontSize="13"
+                   Foreground="#9A9A9A"
+                   Margin="0,0,0,5"/>
+        <DatePicker x:Name="dpStartDate"
+                    Background="#1A1A1A"
+                    BorderBrush="#2A2A2A"
+                    BorderThickness="1"
+                    Padding="12,10"
+                    FontSize="14"
+                    Margin="0,0,0,15"/>
+
+        <TextBlock Text="Datum završetka"
+                   FontSize="13"
+                   Foreground="#9A9A9A"
+                   Margin="0,0,0,5"/>
+        <DatePicker x:Name="dpEndDate"
+                    Background="#1A1A1A"
+                    BorderBrush="#2A2A2A"
+                    BorderThickness="1"
+                    Padding="12,10"
+                    FontSize="14"
+                    Margin="0,0,0,20"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Odustani"
+                    Background="#2A2A2A"
+                    Foreground="#9A9A9A"
+                    BorderThickness="0"
+                    Padding="20,12"
+                    FontSize="14"
+                    Cursor="Hand"
+                    Margin="0,0,10,0"
+                    Click="btnCancel_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3A3A3A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Uvezi"
+                    Background="#FF0000"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Padding="20,12"
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"
+                    Click="btnImport_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CC0000"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Window>
