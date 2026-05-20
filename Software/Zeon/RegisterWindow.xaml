@@ -1,0 +1,99 @@
+﻿<Window x:Class="Zeon.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zeon"
+        mc:Ignorable="d"
+        Height="700" Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Background="#141414">
+    <Grid>
+        <Border Width="500" Height="650" 
+                Background="Transparent" 
+                CornerRadius="5"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Padding="30">
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Registracija" 
+                               FontSize="16" 
+                               FontWeight="Bold"
+                               Foreground="#FFFFFD"
+                               Background="Transparent"
+                               Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Korisnički podaci" 
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="#FFFFFD"
+                               Margin="0,0,0,10"/>
+
+                    <Label Content="Korisničko ime" Foreground="#FFFFFD"/>
+                    <TextBox Name="txtUsername" 
+                             Height="30" 
+                             Padding="5"
+                             Margin="0,0,0,10"/>
+
+                    <Label Content="Email" Foreground="#FFFFFD"/>
+                    <TextBox Name="txtEmail" 
+                             Height="30" 
+                             Padding="5"
+                             Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Lozinka" 
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="#FFFFFD"
+                               Margin="0,10,0,10"/>
+                    
+                    <Label Content="Lozinka" Foreground="#FFFFFD"/>
+                    <PasswordBox Name="txtPassword" 
+                                 Height="30" 
+                                 Padding="5"
+                                 Margin="0,0,0,10"/>
+
+                    <Label Content="Potvrda lozinke" Foreground="#FFFFFD"/>
+                    <PasswordBox Name="txtConfirmPassword" 
+                                 Height="30" 
+                                 Padding="5"
+                                 Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Osobni podaci" 
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               Foreground="#FFFFFD"
+                               Margin="0,10,0,10"/>
+
+                    <Label Content="Ime i prezime" Foreground="#FFFFFD"/>
+                    <TextBox Name="txtName_Surename" 
+                             Height="30" 
+                             Padding="5"
+                             Margin="0,0,0,25"/>
+
+                    <Button Grid.Column="0"
+                            Name="btnRegister" 
+                            Content="Registracija" 
+                            Height="40"
+                            Background="#FF0000"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="btnRegister_Click"/>
+
+                    <TextBlock HorizontalAlignment="Right" Margin="0,15,0,0">
+                        <Hyperlink Name="lnkLogin" 
+                                   Click="lnkLogin_Click"
+                                   Foreground="#5E5E5E">
+                            Već imate račun? Prijavite se!
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

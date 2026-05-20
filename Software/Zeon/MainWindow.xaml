@@ -1,0 +1,545 @@
+﻿<Window x:Class="Zeon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zeon"
+        mc:Ignorable="d"
+        Height="900" Width="1600"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Background="#0A0A0A"
+        KeyDown="MainWindow_KeyDown">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" 
+                Background="#141414"
+                BorderBrush="#2A2A2A"
+                BorderThickness="0,0,1,0">
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="20,20,20,30">
+                    <TextBlock Text="Zeon" 
+                               FontSize="28" 
+                               FontWeight="Bold"
+                               Foreground="#FF0000"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button x:Name="btnDashboard"
+                            Background="#141414"
+                            BorderThickness="0"
+                            Margin="10,0,10,5"
+                            Padding="15,12"
+                            Cursor="Hand"
+                            Click="btnDashboard_Click"
+                            HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📊"
+                                       Foreground="White"
+                                       FontSize="16"
+                                       Margin="0,0,10,0"/>
+                            <TextBlock Text="Dashboard"
+                                       FontSize="14"
+                                       Foreground="#FFFFFD"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <TextBlock Text="👥 Klijenti" 
+                               FontSize="14"
+                               Foreground="White"
+                               Margin="25,15,0,5"/>
+
+                    <Button Name="btnPopisKlijenata"
+                            Content="    Popis klijenata"
+                            Background="Transparent"
+                            Foreground="#9A9A9A"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,5"
+                            Padding="5"
+                            FontSize="13"
+                            Cursor="Hand"
+                            Click="btnPopisKlijenata_Click"/>
+
+                    <Button Name="btnDodajKlijenta"
+                            Content="    Dodaj klijenta"
+                            Background="Transparent"
+                            Foreground="#9A9A9A"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,15"
+                            Padding="5"
+                            FontSize="13"
+                            Cursor="Hand"
+                            Click="btnDodajKlijenta_Click"/>
+
+                    <TextBlock Text="🏋️ Treninzi" 
+                               FontSize="14"
+                               Foreground="White"
+                               Margin="25,10,0,5"/>
+
+                    <Button x:Name="btnPredefinedPlans"
+                            Content="    Predefinirani planovi"
+                            Background="Transparent"
+                            Foreground="#9A9A9A"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,5"
+                            Padding="5"
+                            FontSize="13"
+                            Cursor="Hand"
+                            Click="btnPredefinedPlans_Click"/>
+
+                    <Button Name="btnIzvještaji"
+                            Content="    Izvještaji" 
+                            Background="Transparent"
+                            Foreground="#9A9A9A"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,15"
+                            Padding="5"
+                            FontSize="13"
+                            Cursor="Hand" Click="btnIzvjestaji_Click"/>
+
+                    <TextBlock Text="🍎 Prehrana" 
+                               FontSize="14"
+                               Foreground="White"
+                               Margin="25,10,0,5"/>
+
+                    <Button Content="    Baza hrane"
+                            Name="FoodManage"
+                            Background="Transparent"
+                            Foreground="#9A9A9A"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,5"
+                            Padding="5"
+                            FontSize="13"
+                            Cursor="Hand" Click="FoodManage_Click"/>
+
+                    <Button Name="btnFoodPlans"
+                            Content="    Planovi prehrane" 
+                            Background="Transparent"
+                            Foreground="#9A9A9A"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,5"
+                            Padding="5"
+                            FontSize="13"
+                            Cursor="Hand" Click="btnFoodPlans_Click"/>
+
+                    <Button Name="btnRecipes"
+                            Content="    Recepti" 
+                            Background="Transparent"
+                            Foreground="#9A9A9A"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,15"
+                            Padding="5"
+                            FontSize="13"
+                            Cursor="Hand" Click="btnRecipes_Click"/>
+
+                    <TextBlock Text="💬 Komunikacija" 
+                               FontSize="14"
+                               Foreground="White"
+                               Margin="25,10,0,5"/>
+
+                    <Button x:Name="btnChat"
+                            Content="    Chat"
+                            Background="Transparent"
+                            Foreground="#9A9A9A"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,5"
+                            Padding="5"
+                            FontSize="13"
+                            Cursor="Hand"
+                            Click="btnChat_Click"/>
+
+                    <Button x:Name="btnNotifications"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            HorizontalAlignment="Left"
+                            Margin="35,5,0,15"
+                            Padding="5"
+                            Cursor="Hand"
+                            Click="btnNotifications_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="    Obavijesti"
+                               Foreground="#9A9A9A"
+                               FontSize="13"
+                               VerticalAlignment="Center"/>
+                            <Border x:Name="badgeNotifications"
+                                Background="#FF0000"
+                                CornerRadius="10"
+                                MinWidth="20"
+                                Height="20"
+                                Margin="8,0,0,0"
+                                Padding="5,0"
+                                Visibility="Collapsed"
+                                VerticalAlignment="Center">
+                                <TextBlock x:Name="txtNotificationCount"
+                                   Text="0"
+                                   Foreground="White"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnFeedback"
+                        Content="    Povratne informacije"
+                        Background="Transparent"
+                        Foreground="#9A9A9A"
+                        BorderThickness="0"
+                        HorizontalAlignment="Left"
+                        Margin="35,5,0,15"
+                        Padding="5"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="BtnFeedback_Click"/>
+                    <TextBlock Text="👤 Profil"
+                               FontSize="14"
+                               Foreground="White"
+                               Margin="25,10,0,5"
+                               Cursor="Hand"
+                               MouseLeftButtonDown="btnMyProfile_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Grid x:Name="gridDashboard" Grid.Column="1" Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,0,0,30">
+                <TextBlock Text="Dashboard" 
+                           FontSize="32" 
+                           FontWeight="Bold"
+                           Foreground="#FFFFFD"
+                           VerticalAlignment="Center"/>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Cursor="Hand"
+                            MouseLeftButtonDown="ProfileHeader_Click">
+                    <TextBlock x:Name="txtDashboardName"
+                               Text=""
+                               FontSize="14"
+                               Foreground="#FFFFFD"
+                               VerticalAlignment="Center"
+                               Margin="0,0,15,0"/>
+
+                    <Border Background="#FF0000"
+                            CornerRadius="20"
+                            Width="40"
+                            Height="40">
+                        <TextBlock x:Name="txtDashboardInitials"
+                                   Text=""
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0,0,0,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Background="#1A1A1A"
+                        BorderBrush="#FF0000"
+                        BorderThickness="2"
+                        CornerRadius="8"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="AKTIVNI KLIJENTI" 
+                                   FontSize="11"
+                                   Foreground="#9A9A9A"
+                                   Margin="0,0,0,10"/>
+                        <TextBlock Text="12" 
+                                   FontSize="36"
+                                   FontWeight="Bold"
+                                   Foreground="#FF0000"/>
+                        <TextBlock Text="+2 u zadnjih 7 dana" 
+                                   FontSize="11"
+                                   Foreground="#7A7A7A"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Background="#1A1A1A"
+                        BorderBrush="#00FF00"
+                        BorderThickness="2"
+                        CornerRadius="8"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="TRENINZI OVAJ TJEDAN" 
+                                   FontSize="11"
+                                   Foreground="#9A9A9A"
+                                   Margin="0,0,0,10"/>
+                        <TextBlock Text="28" 
+                                   FontSize="36"
+                                   FontWeight="Bold"
+                                   Foreground="#00FF00"/>
+                        <TextBlock Text="7 klijenata odradilo sve" 
+                                   FontSize="11"
+                                   Foreground="#7A7A7A"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="4"
+                        Background="#1A1A1A"
+                        BorderBrush="#FF0000"
+                        BorderThickness="2"
+                        CornerRadius="8"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="NOVE OBAVIJESTI" 
+                                   FontSize="11"
+                                   Foreground="#9A9A9A"
+                                   Margin="0,0,0,10"/>
+                        <TextBlock Text="5" 
+                                   FontSize="36"
+                                   FontWeight="Bold"
+                                   Foreground="#FF0000"/>
+                        <TextBlock Text="3 povratne informacije" 
+                                   FontSize="11"
+                                   Foreground="#7A7A7A"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="6"
+                        Background="#1A1A1A"
+                        BorderBrush="#00FF00"
+                        BorderThickness="2"
+                        CornerRadius="8"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="NEPROČITANE PORUKE" 
+                                   FontSize="11"
+                                   Foreground="#9A9A9A"
+                                   Margin="0,0,0,10"/>
+                        <TextBlock Text="2" 
+                                   FontSize="36"
+                                   FontWeight="Bold"
+                                   Foreground="#00FF00"/>
+                        <TextBlock Text="Od Ane i Petra" 
+                                   FontSize="11"
+                                   Foreground="#7A7A7A"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+
+                    <Grid Margin="0,0,0,40">
+                        <TextBlock Text="Nedavni klijenti"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="#FFFFFD"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBlock Text="Prikaži sve →"
+                                   FontSize="14"
+                                   Foreground="#FF0000"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Cursor="Hand"
+                                   MouseLeftButtonDown="btnShowAllClients_Click"/>
+                    </Grid>
+
+                    <Border Background="#1A1A1A"
+                            CornerRadius="8"
+                            Padding="0"
+                            Margin="0,0,0,40">
+                        <DataGrid Name="dgRecentClients"
+                                  AutoGenerateColumns="False"
+                                  Background="#1A1A1A"
+                                  Foreground="#FFFFFD"
+                                  BorderThickness="0"
+                                  GridLinesVisibility="None"
+                                  HeadersVisibility="Column"
+                                  RowBackground="#1A1A1A"
+                                  AlternatingRowBackground="#1F1F1F"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="True"
+                                  SelectionMode="Single"
+                                  SelectionUnit="FullRow">
+
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="#1A1A1A"/>
+                                    <Setter Property="Foreground" Value="#7A7A7A"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Padding" Value="15,15,15,15"/>
+                                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                    <Setter Property="BorderBrush" Value="#2A2A2A"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Padding" Value="15,12"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="IME" 
+                                                    Binding="{Binding Name}"
+                                                    Width="*"
+                                                    FontSize="14"/>
+
+                                <DataGridTextColumn Header="POČETAK PROGRAMA" 
+                                                    Binding="{Binding StartDate}"
+                                                    Width="*"
+                                                    FontSize="14"/>
+
+                                <DataGridTextColumn Header="NAPREDAK" 
+                                                    Binding="{Binding Progress}"
+                                                    Width="*"
+                                                    FontSize="14">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="#00FF00"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                                <DataGridTextColumn Header="STATUS" 
+                                                    Width="120"
+                                                    FontSize="13"/>
+
+                                <DataGridTextColumn Header="AKCIJE" 
+                                                    Width="100"
+                                                    FontSize="13"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+
+                    <Grid Margin="0,0,0,20">
+                        <TextBlock Text="Predstojući treninzi (Sljedećih 7 dana)"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="#FFFFFD"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBlock Text="Prikaži sve →"
+                                   FontSize="14"
+                                   Foreground="#FF0000"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Cursor="Hand"
+                                   MouseLeftButtonDown="btnShowAllWorkouts_Click"/>
+                    </Grid>
+
+                    <Border Background="#1A1A1A"
+                            CornerRadius="8"
+                            Padding="0">
+                        <DataGrid Name="dgUpcomingWorkouts"
+                                  AutoGenerateColumns="False"
+                                  Background="#1A1A1A"
+                                  Foreground="#FFFFFD"
+                                  BorderThickness="0"
+                                  GridLinesVisibility="None"
+                                  HeadersVisibility="Column"
+                                  RowBackground="#1A1A1A"
+                                  AlternatingRowBackground="#1F1F1F"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="True"
+                                  SelectionMode="Single"
+                                  SelectionUnit="FullRow">
+
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="#1A1A1A"/>
+                                    <Setter Property="Foreground" Value="#7A7A7A"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Padding" Value="15,15,15,15"/>
+                                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                    <Setter Property="BorderBrush" Value="#2A2A2A"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Padding" Value="15,12"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="KLIJENT" 
+                                                    Binding="{Binding ClientName}"
+                                                    Width="*"
+                                                    FontSize="14"/>
+
+                                <DataGridTextColumn Header="DATUM" 
+                                                    Binding="{Binding Date}"
+                                                    Width="*"
+                                                    FontSize="14"/>
+
+                                <DataGridTextColumn Header="VRIJEME" 
+                                                    Binding="{Binding Time}"
+                                                    Width="*"
+                                                    FontSize="14"/>
+
+                                <DataGridTextColumn Header="PLAN TRENINGA" 
+                                                    Binding="{Binding WorkoutPlan}"
+                                                    Width="2*"
+                                                    FontSize="14"/>
+
+                                <DataGridTextColumn Header="STATUS" 
+                                                    Width="150"
+                                                    FontSize="13"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+
+                </StackPanel>
+            </ScrollViewer>
+
+        </Grid>
+
+        <ContentControl x:Name="contentMain"
+                        Grid.Column="1"
+                        Margin="30"
+                        Visibility="Collapsed"/>
+    </Grid>
+</Window>
